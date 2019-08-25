@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
     <!-- custom styles -->
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     <!-- custom javascript -->
-    <script src="Assets/javascript/app.js"></script>
+    
 
     <title>Trivia Game</title>
 </head>
 <body>
-    <div id="timer-container" class="timer-box" >
-        <p> you have <span id="timer"> 25 </span> seconds to answer </p>
-        
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Trivia Game</h1>
+            <button class="btn btn-primary">Start Game</button>
+        </div>
 
+        <h2 id="time"></h2>
+        <div id="game"></div>
     </div>
     
-    <div id="question-container">
-        <p id="question"></p>
-        <p id="answerChoices"></P>
-
-    </div>
 
 
 
-    
+
+<script src="assets/javascript/app.js"></script>   
 </body>
 </html>
+
+
+
+
+    
+
+
+    
