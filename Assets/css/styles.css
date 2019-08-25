@@ -1,6 +1,10 @@
 .choice {
-    border: 1px solid lightgray;
+    border: 1px solid black;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+body {
+    background-color: hsl(120, 60%, 70%, .5);
 }

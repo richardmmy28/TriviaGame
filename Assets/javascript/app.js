@@ -2,7 +2,7 @@ const quizQuestions = [
     {
         question: "How many yards for a first down?",
         choices: [ "8", "10", "12"],
-        corrrectAnswer: "10"
+        correctAnswer: "10"
     },
 
     {
@@ -14,24 +14,24 @@ const quizQuestions = [
     {
     question: "What does the accronym WR stand for?",
     choices: [ "Wide Right", "Wide Reciever", "Whiskey & Rye"],
-    correctAnswer: 'Wide Reviever'
+    correctAnswer: "Wide Reciever"
     },
 ];
 
 //Initial Values
-let counter = 5;
+let counter = 10;
 let currentQuestion = 0;
 let score = 0;
 let lost = 0;
 let timer;
 
 
-
+//If timer is over go to "next question" or "Game Over" result.
     function nextQuestion() {
         const isQuestionOver = (quizQuestions.length - 1) === currentQuestion;
         if (isQuestionOver) {
-            
             console.log("Game is over!!!");
+            displayResult();
         } else {
             currentQuestion++;
             loadQuestion();
@@ -62,7 +62,7 @@ function countDown() {
 
 //Display the question and the choices to the browser
 function loadQuestion() {
-    counter = 5;
+    counter = 10;
     timer = setInterval(countDown, 1000);
 
     const question = quizQuestions[currentQuestion].question;
@@ -87,6 +87,46 @@ function loadChoices(choices) {
 
     return result;
 }
+
+$(document).on("click", ".choice", function() {
+    clearInterval(timer);
+    const selectedAnswer = $(this).attr("data-answer");
+    const correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+
+    if (correctAnswer === selectedAnswer) {
+        score++;
+        console.log("Wins");
+        nextQuestion();
+    } else {
+        lost++;
+        console.log("loss");
+        nextQuestion();
+    }
+});
+
+function displayResult() {
+    const result = `
+    <p>You got ${score} question(s) right</p>
+    <p>You got ${lost} question(s) wrong</p>
+    <p>Out of a total of ${quizQuestions.length} questions</p>
+    <button class="btn btn-primary" id="reset">Reset Game</button>
+    `;
+
+    $("#game").html(result);
+}
+
+
+$(document).on("click", "#reset", function() {
+    counter = 10;
+    currentQuestion = 0;
+    score = 0;
+    lost = 0;
+    timer = null;
+
+    loadQuestion();
+    
+});
+
 
 loadQuestion();
    
